@@ -7,6 +7,5 @@ const store = configureStore({
   },
 });
 
-console.log("contactsList :>> ", contactsReducer);
 
 export default store;

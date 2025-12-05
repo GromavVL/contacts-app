@@ -8,6 +8,7 @@ function ContactsPage () {
       <h2>Contacts Page</h2>
       <main>
         <ContactsForm />
+        <p>-------------------------------------------------------</p>
         <ContactsList />
       </main>
     </>

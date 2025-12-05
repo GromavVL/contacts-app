@@ -5,13 +5,13 @@ const initialState = {
   contacts: [
     {
       id: uuidv4(),
-      isFavavorite: false,
+      isFavourite: false,
       fullName: "John Doe",
       phoneNumber: "+1234567890",
     },
     {
       id: uuidv4(),
-      isFavavorite: false,
+      isFavourite: false,
       fullName: "Jane Smith",
       phoneNumber: "+0987654321",
     },
@@ -32,9 +32,13 @@ const contactSlice = createSlice({
         ...data,
       };
     },
+    addContact: (state, { payload }) => {
+      console.log("state, payload :>> ", state, payload);
+      state.contacts.push({ ...payload, isFavourite: false, id: uuidv4() });
+    },
   },
 });
 
 export const { reducer, actions } = contactSlice;
-export const { deleteContact, updateContact } = actions;
+export const { deleteContact, updateContact, addContact } = actions;
 export default reducer;
