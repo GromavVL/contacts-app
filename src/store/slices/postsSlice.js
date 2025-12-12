@@ -1,34 +1,34 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
-import axios from "axios"
+import axios from "axios";
+
+const axiosInstance = axios.create({
+  baseURL: "https://jsonplaceholder.typicode.com",
+});
 
 const initialState = {
   posts: [
     {
       userId: 1,
       id: 1,
-      title: "sunt aut facere provident", 
-      body: "quia et suscipiti\nvitae recus"
+      title: "sunt aut facere provident",
+      body: "quia et suscipiti\nvitae recus",
     },
     {
       userId: 1,
       id: 2,
       title: "sunt aut facere provident",
-      body: "quia et suscipiti\nvitae recus"
-    }
+      body: "quia et suscipiti\nvitae recus",
+    },
   ],
-  isFetching: true,
+  isFetching: false,
   error: null,
 };
-
-const axiosInstance = axios.create({
-  baseURL: "https://jsonplaceholder.typicode.com"
-})
 
 export const getPostsThunk = createAsyncThunk(
   "posts/getPosts",
   async (payload, thunkAPI) => {
-    const data = await axiosInstance.get("/posts")
-    console.log('data :>> ', data);
+    const data = await axiosInstance.get("/posts");
+    console.log("data :>> ", data);
   }
 );
 
@@ -41,7 +41,6 @@ const postsSlice = createSlice({
     },
   },
 });
-
 
 const { reducer, actions } = postsSlice;
 export const { setActions } = actions;
