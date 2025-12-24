@@ -1,11 +1,11 @@
 import ContactsPage from './pages/ContactsPage'
 import PostsPage from './pages/PostsPage'
-import { Link, BrowserRouter, Routes, Route } from 'react-router-dom'
+import { Link, BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 
 function App () {
   return (
     <div>
-      <BrowserRouter>
+      <Router>
         <nav>
           <ul>
             <li>
@@ -17,10 +17,11 @@ function App () {
           </ul>
         </nav>
         <Routes>
+          <Route path='/' element={<Navigate to='/posts' />} />
           <Route path='/contact' element={<ContactsPage />} />
           <Route path='/posts' element={<PostsPage />} />
         </Routes>
-      </BrowserRouter>
+      </Router>
     </div>
   )
 }

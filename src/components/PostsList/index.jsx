@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 import { getPostsThunk } from '../../store/slices/postsSlice'
 import { useEffect } from 'react'
 
-function PostsList ({ post, isFetching, error, getPosts }) {
+function PostsList ({ posts, isFetching, error, getPosts }) {
   useEffect(() => {
     getPosts()
   }, [])
@@ -18,13 +18,13 @@ function PostsList ({ post, isFetching, error, getPosts }) {
     <>
       {isFetching && <div>Loading....</div>}
       {error && <div>ERRROR!!!!</div>}
-      {!isFetching && !error && <ul>{post.map(mapProps)}</ul>}
+      {!isFetching && !error && <ul>{posts.map(mapProps)}</ul>}
     </>
   )
 }
 
 const mapDispatchToProps = dispatch => ({
-  getPosts: () => dispatch(getPostsThunk)
+  getPosts: () => dispatch(getPostsThunk())
 })
 
 const mapStateToProps = ({ postsList }) => postsList
